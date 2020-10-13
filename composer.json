@@ -40,6 +40,8 @@
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
+        "rector/rector": "^0.8.17",
+        "squizlabs/php_codesniffer": "*",
         "symfony/browser-kit": "^5.1",
         "symfony/css-selector": "^5.1",
         "symfony/debug-bundle": "^5.1",
