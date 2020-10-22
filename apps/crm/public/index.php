@@ -1,24 +1,13 @@
 <?php
 
-//use CodelyTv\Apps\Mooc\Backend\MoocBackendKernel;
 use CodelyTv\Apps\Crm\MoocBackendKernel;
-
-//use Symfony\Component\Debug\Debug;
+use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\Request;
 
-
-//$file = dirname(__DIR__) . '/src/bootstrap.php';
-//var_dump($file);
-//if (file_exists($file)) {
-//    var_dump('yes');
-//} else {
-//    var_dump('no');
-//}
-//die;
-
-
 require dirname(__DIR__) . '/src/bootstrap.php';
+
+(new Dotenv())->bootEnv(dirname(__DIR__,3) . '/.env');
 
 if ($_SERVER['APP_DEBUG']) {
     umask(0000);

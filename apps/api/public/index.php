@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 require dirname(__DIR__) . '/src/bootstrap.php';
 
-(new Dotenv())->bootEnv(dirname(__DIR__) . '/.env');
+(new Dotenv())->bootEnv(dirname(__DIR__,3) . '/.env');
 
 if ($_SERVER['APP_DEBUG']) {
     umask(0000);
