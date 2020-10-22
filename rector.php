@@ -1,21 +1,21 @@
-<?php
+<?php /** @noinspection PhpUnusedLocalVariableInspection */
 
 // rector.php
 
 declare(strict_types=1);
 
 use Rector\Core\Configuration\Option;
-use Rector\Php74\Rector\Property\TypedPropertyRector;
 use Rector\Set\ValueObject\SetList;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
+
     // get parameters
     $parameters = $containerConfigurator->parameters();
 
     $parameters->set(
         Option::SYMFONY_CONTAINER_XML_PATH_PARAMETER,
-        __DIR__ . '/var/cache/dev/App_KernelDevDebugContainer.xml'
+        __DIR__ . '/apps/api//var/cache/dev/CodelyTv_Apps_Api_MoocBackendKernelDevDebugContainer.xml'
     );
 
     // here we can define, what sets of rules will be applied

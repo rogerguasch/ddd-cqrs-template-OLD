@@ -60,7 +60,9 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "CodelyTv\\Apps\\Api\\": "apps/api/src",
+            "CodelyTv\\Apps\\Crm\\": "apps/crm/src",
+            "CodelyTv\\": ["src"]
         }
     },
     "autoload-dev": {
@@ -79,8 +81,6 @@
     },
     "scripts": {
         "auto-scripts": {
-            "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
             "@auto-scripts"

@@ -1,0 +1,2 @@
+# CRM
+GET http://localhost:8091/health-check
