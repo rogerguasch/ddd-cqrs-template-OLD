@@ -36,3 +36,11 @@ clear-cache:
 	@./apps/api/bin/console cache:warmup
 	@echo "Cleaning CRM cache..."
 	@./apps/crm/bin/console cache:warmup
+
+.PHONY: start
+start:
+	@docker-compose up -d
+
+.PHONY: restart
+restart:
+	@docker-compose restart

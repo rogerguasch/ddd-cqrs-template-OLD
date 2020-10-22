@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  rgr_api:
+    container_name: rgr_api
+    build:
+      context: apps
+      dockerfile: ../docker/php/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8040:8040"
+      - "9040:9001"
+    volumes:
+      - .:/app:delegated
+    command: symfony serve --dir=apps/api/public --port=8040 --force-php-discovery
+
+  rgr_crm:
+    container_name: rgr_crm
+    build:
+      context: apps
+      dockerfile: ../docker/php/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8041:8041"
+      - "9041:9001"
+    volumes:
+      - .:/app:delegated
+    command: symfony serve --dir=apps/crm/public --port=8041 --force-php-discovery
