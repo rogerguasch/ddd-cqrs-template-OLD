@@ -1,8 +1,8 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
-namespace CodelyTv\Shared\Infrastructure;
+namespace RGR\Shared\Infrastructure;
 
 final class RandomNumberGenerator
 {

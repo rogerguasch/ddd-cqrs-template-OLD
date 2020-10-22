@@ -15,7 +15,12 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $parameters->set(
         Option::SYMFONY_CONTAINER_XML_PATH_PARAMETER,
-        __DIR__ . '/apps/api//var/cache/dev/CodelyTv_Apps_Api_MoocBackendKernelDevDebugContainer.xml'
+        __DIR__ . '/apps/api//var/cache/dev/RGR_Apps_Api_ApiKernelDevDebugContainer.xml'
+    );
+
+    $parameters->set(
+        Option::SYMFONY_CONTAINER_XML_PATH_PARAMETER,
+        __DIR__ . '/apps/api//var/cache/dev/RGR_Apps_Api_CrmKernelDevDebugContainer.xml'
     );
 
     // here we can define, what sets of rules will be applied

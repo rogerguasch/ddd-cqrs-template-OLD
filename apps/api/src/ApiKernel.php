@@ -1,19 +1,13 @@
 <?php
 
-declare(strict_types=1);
-
-namespace CodelyTv\Apps\Crm;
+namespace RGR\Apps\Api;
 
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
-use Symfony\Component\Config\Loader\LoaderInterface;
-use Symfony\Component\Config\Resource\FileResource;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
-use Symfony\Component\Routing\RouteCollectionBuilder;
 
-final class MoocBackendKernel extends Kernel
+final class ApiKernel extends BaseKernel
 {
     use MicroKernelTrait;
 

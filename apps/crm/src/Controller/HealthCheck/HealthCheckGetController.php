@@ -2,9 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace CodelyTv\Apps\Crm\Controller\HealthCheck;
+namespace RGR\Apps\Crm\Controller\HealthCheck;
 
-use CodelyTv\Shared\Infrastructure\RandomNumberGenerator;
+use RGR\Shared\Infrastructure\RandomNumberGenerator;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

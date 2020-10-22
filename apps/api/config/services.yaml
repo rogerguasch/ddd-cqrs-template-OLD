@@ -4,9 +4,9 @@ services:
     autowire: true
 
 
-  CodelyTv\Apps\Api\Controller\:
+  RGR\Apps\Api\Controller\:
     resource: '../src/Controller'
     tags: ['controller.service_arguments']
 
-  CodelyTv\:
+  RGR\:
     resource: '../../../src'

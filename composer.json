@@ -60,9 +60,9 @@
     },
     "autoload": {
         "psr-4": {
-            "CodelyTv\\Apps\\Api\\": "apps/api/src",
-            "CodelyTv\\Apps\\Crm\\": "apps/crm/src",
-            "CodelyTv\\": ["src"]
+            "RGR\\Apps\\Api\\": "apps/api/src",
+            "RGR\\Apps\\Crm\\": "apps/crm/src",
+            "RGR\\": ["src"]
         }
     },
     "autoload-dev": {
