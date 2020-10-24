@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace RGR\Apps\Api\Controller\HealthCheck;
 
@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class HealthCheckGetController
 {
-    private $generator;
+    private RandomNumberGenerator $generator;
 
     public function __construct(RandomNumberGenerator $generator)
     {
@@ -23,7 +23,7 @@ final class HealthCheckGetController
         return new JsonResponse(
             [
                 'api' => 'ok',
-                'rand'         => $this->generator->generate(),
+                'rand' => $this->generator->generate(),
             ]
         );
     }
