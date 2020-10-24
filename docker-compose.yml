@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  rgr_api:
+  api:
     container_name: rgr_api
     build:
       context: apps
@@ -13,8 +13,10 @@ services:
     volumes:
       - .:/app:delegated
     command: symfony serve --dir=apps/api/public --port=8040 --force-php-discovery
+    networks:
+      - rgr-app
 
-  rgr_crm:
+  crm:
     container_name: rgr_crm
     build:
       context: apps
@@ -26,3 +28,70 @@ services:
     volumes:
       - .:/app:delegated
     command: symfony serve --dir=apps/crm/public --port=8041 --force-php-discovery
+    networks:
+      - rgr-app
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.3
+    container_name: rgr_elasticsearch
+    ports: [ '9200:9200' ]
+    environment:
+      - "ELASTIC_PASSWORD=elastic"
+      - "bootstrap.memory_lock=true"
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+      - "discovery.type=single-node"
+      - "TAKE_FILE_OWNERSHIP=1"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - './var/elasticsearch:/usr/share/elasticsearch/data'
+    networks:
+      - rgr-app
+
+  #  logstash:
+  #    image: docker.elastic.co/logstash/logstash:7.9.3
+  #    container_name: logstash
+  #    environment:
+  #      - "ELASTIC_PASSWORD=elastic"
+  #    ports: ['9600:9600']
+  #    depends_on:
+  #      - elasticsearch
+  #    volumes:
+  #      - './docker/etc/logstash/pipeline:/usr/share/logstash/pipeline'
+  #      - './var/logs:/logs'
+  #    networks:
+  #      - app-network
+
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:7.9.3
+    container_name: rgr_filebeat
+    environment:
+      - "ELASTIC_PASSWORD=elastic"
+    user: root
+    volumes:
+      - './var/filebeat/log/:/var/log/:ro'
+      - './var/filebeat/docker.sock:/var/run/docker.sock'
+      - './apps/api/var/log/:/var/lib/docker/containers/api/logs:ro'
+      - './apps/crm/var/log/:/var/lib/docker/containers/crm/logs:ro'
+      - './docker/etc/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml'
+    command: [ "--strict.perms=false" ]
+    networks:
+      - rgr-app
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.9.3
+    container_name: rgr_kibana
+    environment:
+      - "ELASTIC_PASSWORD=elastic"
+    ports: [ '5601:5601' ]
+    depends_on:
+      - elasticsearch
+    networks:
+      - rgr-app
+
+#Docker Networks
+networks:
+  rgr-app:
+    driver: bridge
