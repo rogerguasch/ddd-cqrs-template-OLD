@@ -18,4 +18,4 @@ RUN apk --update upgrade \
 
 RUN curl -sS https://get.symfony.com/cli/installer | bash && mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 
-COPY infrastructure/php /usr/local/etc/php/
+COPY docker/etc/php/ /usr/local/etc/php/

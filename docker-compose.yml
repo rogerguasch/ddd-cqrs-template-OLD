@@ -4,8 +4,8 @@ services:
   api:
     container_name: rgr_api
     build:
-      context: apps
-      dockerfile: ../docker/php/Dockerfile
+      context: .
+      dockerfile: Dockerfile
     restart: unless-stopped
     ports:
       - "8040:8040"
@@ -19,8 +19,8 @@ services:
   crm:
     container_name: rgr_crm
     build:
-      context: apps
-      dockerfile: ../docker/php/Dockerfile
+      context: .
+      dockerfile: Dockerfile
     restart: unless-stopped
     ports:
       - "8041:8041"
