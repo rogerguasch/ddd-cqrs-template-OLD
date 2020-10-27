@@ -44,3 +44,9 @@ start:
 .PHONY: restart
 restart:
 	@docker-compose restart
+
+
+.PHONY: test
+test:
+	@echo "UNIT TESTING in SHARED folder..."
+	 @php vendor/phpunit/phpunit/phpunit --bootstrap apps/bootstrap.php --configuration phpunit.xml tests/Shared --teamcity

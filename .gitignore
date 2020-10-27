@@ -15,12 +15,13 @@
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 
-
-###> CUSTOM ###
-.idea
-###< CUSTOM ###
-
 ###> squizlabs/php_codesniffer ###
 /.phpcs-cache
 /phpcs.xml
 ###< squizlabs/php_codesniffer ###
+
+###> CUSTOM ###
+.idea
+.php_cs.cache
+build
+###< CUSTOM ###
