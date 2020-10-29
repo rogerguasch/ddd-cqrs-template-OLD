@@ -1,18 +1,9 @@
 {
-    "composer/ca-bundle": {
-        "version": "1.2.8"
-    },
-    "composer/composer": {
-        "version": "1.10.13"
-    },
     "composer/package-versions-deprecated": {
         "version": "1.11.99"
     },
     "composer/semver": {
         "version": "1.7.1"
-    },
-    "composer/spdx-licenses": {
-        "version": "1.5.4"
     },
     "composer/xdebug-handler": {
         "version": "1.4.3"
@@ -90,9 +81,6 @@
     "doctrine/persistence": {
         "version": "2.0.0"
     },
-    "doctrine/reflection": {
-        "version": "1.2.1"
-    },
     "doctrine/sql-formatter": {
         "version": "1.1.1"
     },
@@ -101,9 +89,6 @@
     },
     "jean85/pretty-package-versions": {
         "version": "1.5.1"
-    },
-    "justinrainbow/json-schema": {
-        "version": "5.2.10"
     },
     "laminas/laminas-code": {
         "version": "3.4.1"
@@ -224,6 +209,9 @@
     "rector/rector": {
         "version": "0.8.17"
     },
+    "roave/security-advisories": {
+        "version": "dev-latest"
+    },
     "sebastian/cli-parser": {
         "version": "1.0.1"
     },
@@ -272,12 +260,6 @@
     "sebastian/version": {
         "version": "3.0.2"
     },
-    "seld/jsonlint": {
-        "version": "1.8.2"
-    },
-    "seld/phar-utils": {
-        "version": "1.1.1"
-    },
     "sensio/framework-extra-bundle": {
         "version": "5.2",
         "recipe": {
@@ -303,9 +285,6 @@
         ]
     },
     "symfony/asset": {
-        "version": "v5.1.7"
-    },
-    "symfony/browser-kit": {
         "version": "v5.1.7"
     },
     "symfony/cache": {
@@ -354,9 +333,6 @@
         "version": "v2.2.0"
     },
     "symfony/doctrine-bridge": {
-        "version": "v5.1.7"
-    },
-    "symfony/dom-crawler": {
         "version": "v5.1.7"
     },
     "symfony/dotenv": {
