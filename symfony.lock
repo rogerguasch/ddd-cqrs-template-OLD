@@ -175,7 +175,7 @@
         "version": "0.12.16"
     },
     "phpunit/php-code-coverage": {
-        "version": "9.2.1"
+        "version": "9.2.2"
     },
     "phpunit/php-file-iterator": {
         "version": "3.0.5"

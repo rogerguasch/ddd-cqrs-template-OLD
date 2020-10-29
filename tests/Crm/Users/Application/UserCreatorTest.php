@@ -22,6 +22,7 @@ final class UserCreatorTest extends TestCase
         $email = 'some-email';
 
         $user = new User($id, $name, $email);
+
         $userRepository->expects($this->once())->method('save')->with($user);
 
         $userCreator->execute($id, $name, $email);
