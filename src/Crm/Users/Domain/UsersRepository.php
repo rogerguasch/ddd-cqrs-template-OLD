@@ -8,5 +8,5 @@ interface UsersRepository
 {
     public function save(User $user): void;
 
-    public function search(string $id): ?User;
+    public function search(UserId $id): ?User;
 }

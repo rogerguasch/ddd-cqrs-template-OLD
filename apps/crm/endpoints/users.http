@@ -1,2 +1,9 @@
 # CRM
-PUT http://localhost:8041/users/232345
+PUT http://localhost:8041/users
+Content-Type: application/json
+
+{
+  "name": "Random name",
+  "email": "random@email.com"
+}
+

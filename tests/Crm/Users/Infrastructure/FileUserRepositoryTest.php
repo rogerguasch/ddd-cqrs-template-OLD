@@ -6,6 +6,7 @@ namespace RGR\Tests\Crm\Users\Infrastructure;
 
 use PHPUnit\Framework\TestCase;
 use RGR\Crm\Users\Domain\User;
+use RGR\Crm\Users\Domain\UserId;
 use RGR\Crm\Users\Infrastructure\FileUsersRepository;
 
 final class FileUserRepositoryTest extends TestCase
@@ -15,10 +16,10 @@ final class FileUserRepositoryTest extends TestCase
     {
         $fileUsersRepository = new FileUsersRepository();
 
-        $id = 'some-id';
+        $id = '4a0113c0-781b-4f6c-b383-715e30ad0bb0';
         $name = 'some-name';
         $email = 'some-email';
-        $user = new User($id, $name, $email);
+        $user = new User(new UserId($id), $name, $email);
 
         $fileUsersRepository->save($user);
     }
@@ -28,10 +29,10 @@ final class FileUserRepositoryTest extends TestCase
     {
         $fileUsersRepository = new FileUsersRepository();
 
-        $id = 'some-other-id';
+        $id = '6fd17080-568c-4bdb-a4f2-1d4942e2b453';
         $name = 'some-other_name';
         $email = 'some-other-email';
-        $user = new User($id, $name, $email);
+        $user = new User(new UserId($id), $name, $email);
 
         $fileUsersRepository->save($user);
 
@@ -43,6 +44,6 @@ final class FileUserRepositoryTest extends TestCase
     {
         $fileUsersRepository = new FileUsersRepository();
 
-        $this->assertNull($fileUsersRepository->search('randomId'));
+        $this->assertNull($fileUsersRepository->search(new UserId('9aff0ceb-5bfc-4237-abf3-178d105bffa6')));
     }
 }

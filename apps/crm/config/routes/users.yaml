@@ -1,4 +1,4 @@
 users_put:
-    path: /users/{id}
+    path: /users
     controller: RGR\Apps\Crm\Controller\Users\UsersPutController
     methods:  [PUT]

@@ -6,6 +6,7 @@ namespace RGR\Crm\Users\Application;
 
 use RGR\Apps\Crm\Controller\Users\Request\CreateUserRequest;
 use RGR\Crm\Users\Domain\User;
+use RGR\Crm\Users\Domain\UserId;
 use RGR\Crm\Users\Domain\UsersRepository;
 
 final class UserCreator
@@ -19,7 +20,12 @@ final class UserCreator
 
     public function execute(CreateUserRequest $createUserRequest): void
     {
-        $user = new User($createUserRequest->id(), $createUserRequest->name(), $createUserRequest->email());
+        $user = new User(
+            new UserId($createUserRequest->id()),
+            $createUserRequest->name(),
+            $createUserRequest->email()
+        );
+
         $this->usersRepository->save($user);
     }
 }

@@ -8,6 +8,7 @@ use PHPUnit\Framework\TestCase;
 use RGR\Apps\Crm\Controller\Users\Request\CreateUserRequest;
 use RGR\Crm\Users\Application\UserCreator;
 use RGR\Crm\Users\Domain\User;
+use RGR\Crm\Users\Domain\UserId;
 use RGR\Crm\Users\Domain\UsersRepository;
 
 final class UserCreatorTest extends TestCase
@@ -18,11 +19,15 @@ final class UserCreatorTest extends TestCase
         $userRepository = $this->createMock(UsersRepository::class);
         $userCreator = new UserCreator($userRepository);
 
-        $id = 'some-id';
+        $id = 'c347904a-56fb-4ae5-a431-f88660968a37';
         $name = 'some-name';
         $email = 'some-email';
 
-        $user = new User($id, $name, $email);
+        $user = new User(
+            new UserId($id),
+            $name,
+            $email
+        );
 
         $userRepository->expects($this->once())->method('save')->with($user);
 

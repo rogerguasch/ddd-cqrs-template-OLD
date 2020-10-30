@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace RGR\Crm\Users\Infrastructure;
 
 use RGR\Crm\Users\Domain\User;
+use RGR\Crm\Users\Domain\UserId;
 use RGR\Crm\Users\Domain\UsersRepository;
 
 class FileUsersRepository implements UsersRepository
@@ -14,7 +15,7 @@ class FileUsersRepository implements UsersRepository
     public function save(User $user): void
     {
         file_put_contents(
-            $this->fileName($user->id()),
+            $this->fileName($user->id()->uuid()),
             serialize($user)
         );
     }
@@ -24,10 +25,10 @@ class FileUsersRepository implements UsersRepository
         return sprintf('%s.%s.repo', self::FILE_PATH, $id);
     }
 
-    public function search(string $id): ?User
+    public function search(UserId $id): ?User
     {
-        return file_exists($this->fileName($id))
-            ? unserialize(file_get_contents($this->fileName($id)), [true])
+        return file_exists($this->fileName($id->uuid()))
+            ? unserialize(file_get_contents($this->fileName($id->uuid())), [true])
             : null;
     }
 }
