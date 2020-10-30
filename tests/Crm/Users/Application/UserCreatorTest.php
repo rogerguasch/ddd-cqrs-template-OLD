@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace RGR\Tests\Crm\Users\Application;
 
 use PHPUnit\Framework\TestCase;
+use RGR\Apps\Crm\Controller\Users\Request\CreateUserRequest;
 use RGR\Crm\Users\Application\UserCreator;
 use RGR\Crm\Users\Domain\User;
 use RGR\Crm\Users\Domain\UsersRepository;
@@ -25,6 +26,7 @@ final class UserCreatorTest extends TestCase
 
         $userRepository->expects($this->once())->method('save')->with($user);
 
-        $userCreator->execute($id, $name, $email);
+        $createUserRequest = new CreateUserRequest($id, $name, $email);
+        $userCreator->execute($createUserRequest);
     }
 }

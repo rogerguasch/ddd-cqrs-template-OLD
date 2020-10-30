@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace RGR\Crm\Users\Application;
 
+use RGR\Apps\Crm\Controller\Users\Request\CreateUserRequest;
 use RGR\Crm\Users\Domain\User;
 use RGR\Crm\Users\Domain\UsersRepository;
 
@@ -16,9 +17,9 @@ final class UserCreator
         $this->usersRepository = $usersRepository;
     }
 
-    public function execute(string $id, string $name, string $email): void
+    public function execute(CreateUserRequest $createUserRequest): void
     {
-        $user = new User($id, $name, $email);
+        $user = new User($createUserRequest->id(), $createUserRequest->name(), $createUserRequest->email());
         $this->usersRepository->save($user);
     }
 }

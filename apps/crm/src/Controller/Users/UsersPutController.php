@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace RGR\Apps\Crm\Controller\Users;
 
+use RGR\Apps\Crm\Controller\Users\Request\CreateUserRequest;
 use RGR\Crm\Users\Application\UserCreator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,10 +21,13 @@ final class UsersPutController
 
     public function __invoke(string $id, Request $request): Response
     {
-        $name = $request->get('name');
-        $email = $request->get('email');
+        $createUserRequest = new CreateUserRequest(
+            $id,
+            $name = $request->get('name'),
+            $email = $request->get('email')
+        );
 
-        $this->userCreator->execute($id, $name, $email);
+        $this->userCreator->execute($createUserRequest);
 
         return new Response('', Response::HTTP_CREATED);
     }
