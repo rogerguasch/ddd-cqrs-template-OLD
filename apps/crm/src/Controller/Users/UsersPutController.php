@@ -23,8 +23,8 @@ final class UsersPutController
     {
         $createUserRequest = new CreateUserRequest(
             $id,
-            $name = $request->get('name'),
-            $email = $request->get('email')
+            $name = $request->request->get('name'),
+            $email = $request->request->get('email')
         );
 
         $this->userCreator->execute($createUserRequest);

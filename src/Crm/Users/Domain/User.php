@@ -8,10 +8,10 @@ namespace RGR\Crm\Users\Domain;
 final class User
 {
     private UserId $id;
-    private string $name;
-    private string $email;
+    private UserName $name;
+    private UserEmail $email;
 
-    public function __construct(UserId $id, string $name, string $email)
+    public function __construct(UserId $id, UserName $name, UserEmail $email)
     {
         $this->id = $id;
         $this->name = $name;
@@ -23,12 +23,12 @@ final class User
         return $this->id;
     }
 
-    public function name(): string
+    public function name(): UserName
     {
         return $this->name;
     }
 
-    public function email(): string
+    public function email(): UserEmail
     {
         return $this->email;
     }

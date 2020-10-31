@@ -15,7 +15,7 @@ class FileUsersRepository implements UsersRepository
     public function save(User $user): void
     {
         file_put_contents(
-            $this->fileName($user->id()->uuid()),
+            $this->fileName($user->id()->value()),
             serialize($user)
         );
     }
@@ -27,8 +27,8 @@ class FileUsersRepository implements UsersRepository
 
     public function search(UserId $id): ?User
     {
-        return file_exists($this->fileName($id->uuid()))
-            ? unserialize(file_get_contents($this->fileName($id->uuid())), [true])
+        return file_exists($this->fileName($id->value()))
+            ? unserialize(file_get_contents($this->fileName($id->value())), [true])
             : null;
     }
 }

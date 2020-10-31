@@ -4,42 +4,42 @@
 namespace RGR\Shared\Domain\ValueObject;
 
 use InvalidArgumentException;
-use Symfony\Component\Uid\Uuid as SymfonyUuid;
+use Symfony\Component\Uid\Uuid;
 
-abstract class Uuid
+abstract class UuidVo
 {
     private string $uuid;
 
-    public function __construct(string $uuid)
+    public function __construct(string $value)
     {
-        $this->ensureIsValidUuid($uuid);
-        $this->uuid = $uuid;
+        $this->ensureIsValidUuid($value);
+        $this->uuid = $value;
     }
 
     private function ensureIsValidUuid(string $uuid): void
     {
-        if (!SymfonyUuid::isValid($uuid)) {
+        if (!Uuid::isValid($uuid)) {
             throw new InvalidArgumentException(sprintf('<%s> does not allow the value <%s>.', static::class, $uuid));
         }
     }
 
     public static function random(): self
     {
-        return new static(SymfonyUuid::v4());
+        return new static(Uuid::v4());
     }
 
-    public function equals(Uuid $other): bool
+    public function equals(UuidVo $other): bool
     {
-        return $this->uuid() === $other->uuid();
+        return $this->value() === $other->value();
     }
 
-    public function uuid(): string
+    public function value(): string
     {
         return $this->uuid;
     }
 
     public function __toString(): string
     {
-        return $this->uuid();
+        return $this->value();
     }
 }
