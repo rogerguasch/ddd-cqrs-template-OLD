@@ -87,6 +87,9 @@
     "egulias/email-validator": {
         "version": "2.1.22"
     },
+    "fzaninotto/faker": {
+        "version": "v1.9.1"
+    },
     "jean85/pretty-package-versions": {
         "version": "1.5.1"
     },

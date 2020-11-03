@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace RGR\Crm\Users\Domain;
 
-use http\Exception\InvalidArgumentException;
+
+use InvalidArgumentException;
 use RGR\Shared\Domain\ValueObject\StringVO;
 
 final class UserName extends StringVO
@@ -17,8 +18,8 @@ final class UserName extends StringVO
 
     private function ensureNameIsMin3Letters(string $value): void
     {
-        if (strlen($value) < 3) {
-            throw new InvalidArgumentException('Username min length is 3');
+        if (strlen($value) > 30) {
+            throw new InvalidArgumentException('Username max length is 30');
         }
     }
 }
