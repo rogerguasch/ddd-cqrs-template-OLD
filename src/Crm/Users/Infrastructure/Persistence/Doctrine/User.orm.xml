@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="RGR\Crm\Users\Domain\User" table="users">
+        <id name="id" type="user_id" column="id" length="36"/>
+
+        <embedded name="name" class="RGR\Crm\Users\Domain\UserName" use-column-prefix="false"/>
+        <embedded name="email" class="RGR\Crm\Users\Domain\UserEmail" use-column-prefix="false"/>
+    </entity>
+
+</doctrine-mapping>

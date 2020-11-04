@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RGR\Crm\Users\Infrastructure;
+namespace RGR\Crm\Users\Infrastructure\Persistence;
 
 use RGR\Crm\Users\Domain\User;
 use RGR\Crm\Users\Domain\UserId;

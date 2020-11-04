@@ -22,9 +22,9 @@ final class UsersPutController
     public function __invoke(string $id, Request $request): Response
     {
         $createUserRequest = new CreateUserRequest(
-            $id,
-            $name = $request->request->get('name'),
-            $email = $request->request->get('email')
+            'bd122c01-f874-421b-ab50-60d8208734ca',
+            'name',
+            'email@email.com'
         );
 
         $this->userCreator->execute($createUserRequest);

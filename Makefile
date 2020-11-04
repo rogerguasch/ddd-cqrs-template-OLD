@@ -45,6 +45,9 @@ start:
 restart:
 	@docker-compose restart
 
+.PHONY: ping-mysql
+ping-mysql:
+	@docker exec rgr_mysql mysqladmin --user=root --password= --host "127.0.0.1" ping --silent
 
 .PHONY: test
 test:

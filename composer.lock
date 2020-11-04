@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "422159cea842eb9c164c8d4bac93ed6a",
+    "content-hash": "4635647c6b25202c81a3eb6d3440a505",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -1467,6 +1467,62 @@
                 "source": "https://github.com/egulias/EmailValidator/tree/2.1.22"
             },
             "time": "2020-09-26T15:48:38+00:00"
+        },
+        {
+            "name": "lambdish/phunctional",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Lambdish/phunctional.git",
+                "reference": "ed3482e7da134d886789abb33c6df22a5d2f271c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Lambdish/phunctional/zipball/ed3482e7da134d886789abb33c6df22a5d2f271c",
+                "reference": "ed3482e7da134d886789abb33c6df22a5d2f271c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.11.16",
+                "phpunit/phpunit": "^8.4"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/_bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eloi Poch"
+                },
+                {
+                    "name": "Jorge Ávila"
+                },
+                {
+                    "name": "Rafa Gómez"
+                }
+            ],
+            "description": "λ PHP functional library",
+            "keywords": [
+                "functional",
+                "generator",
+                "lambda",
+                "library",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/Lambdish/phunctional/issues",
+                "source": "https://github.com/Lambdish/phunctional/tree/v2.1.0"
+            },
+            "time": "2020-09-18T07:22:08+00:00"
         },
         {
             "name": "laminas/laminas-code",

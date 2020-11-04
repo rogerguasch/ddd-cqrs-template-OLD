@@ -92,7 +92,7 @@ services:
       - rgr-app
 
   mysql:
-    container_name: rgr_mysql
+    container_name: rgr_crm_mysql
     image: mysql:8.0
     ports:
       - 3360:3306

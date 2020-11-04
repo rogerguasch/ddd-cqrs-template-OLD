@@ -93,6 +93,9 @@
     "jean85/pretty-package-versions": {
         "version": "1.5.1"
     },
+    "lambdish/phunctional": {
+        "version": "v2.1.0"
+    },
     "laminas/laminas-code": {
         "version": "3.4.1"
     },

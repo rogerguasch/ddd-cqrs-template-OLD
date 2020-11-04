@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace RGR\Tests\Crm\Users\Infrastructure;
 
 use PHPUnit\Framework\TestCase;
-use RGR\Crm\Users\Infrastructure\FileUsersRepository;
+
+use RGR\Crm\Users\Infrastructure\Persistence\FileUsersRepository;
 use RGR\Tests\Crm\Users\Domain\UserIdMother;
 use RGR\Tests\Crm\Users\Domain\UserMother;
 

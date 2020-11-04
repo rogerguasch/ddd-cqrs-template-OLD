@@ -1,0 +1,19 @@
+services:
+  # Databases
+  Doctrine\ORM\EntityManager:
+    factory: [ RGR\Crm\Shared\Infrastructure\Doctrine\CrmEntityManagerFactory, create ]
+    arguments:
+      - driver: '%env(CRM_DATABASE_DRIVER)%'
+        host: '%env(CRM_DATABASE_HOST)%'
+        port: '%env(CRM_DATABASE_PORT)%'
+        dbname: '%env(CRM_DATABASE_NAME)%'
+        user: '%env(CRM_DATABASE_USER)%'
+        password: '%env(CRM_DATABASE_PASSWORD)%'
+      - '%env(APP_ENV)%'
+    tags:
+      - { name: rgr.database_connection }
+    public: true
+
+
+  # Users
+  RGR\Crm\Users\Domain\UsersRepository: '@RGR\Crm\Users\Infrastructure\Persistence\DoctrineUsersRepository'

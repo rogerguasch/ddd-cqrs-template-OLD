@@ -1,3 +1,6 @@
+imports:
+  - { resource: ../../../src/Crm/Shared/Infrastructure/Symfony/DependencyInjection/crm_services.yaml }
+
 services:
   _defaults:
     autoconfigure: true
@@ -7,6 +10,7 @@ services:
   RGR\Apps\Crm\Controller\:
     resource: '../src/Controller'
     tags: ['controller.service_arguments']
+    exclude: '../src/Controller/*/Request'
 
   RGR\:
     resource: '../../../src'
