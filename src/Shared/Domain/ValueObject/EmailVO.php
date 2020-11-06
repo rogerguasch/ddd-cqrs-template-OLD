@@ -1,27 +1,19 @@
 <?php
 
+declare(strict_types=1);
 
 namespace RGR\Shared\Domain\ValueObject;
 
-use Symfony\Component\Validator\Constraints as Assert;
-
+use Assert\Assertion;
 
 abstract class EmailVO
 {
-    /**
-     * @Assert\NotBlank
-     * @Assert\Email(
-     *     message = "The email '{{ value }}' is not a valid email."
-     * )
-     */
     protected string $value;
 
     public function __construct(string $value)
     {
-
-        Assert::that($value)->email();
+        Assertion::email($value);
         $this->value = $value;
-
     }
 
     public function __toString(): string
