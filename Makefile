@@ -47,9 +47,14 @@ restart:
 
 .PHONY: ping-mysql
 ping-mysql:
-	@docker exec rgr_mysql mysqladmin --user=root --password= --host "127.0.0.1" ping --silent
+	@docker exec rgr_crm_mysql mysqladmin --user=root --password=crm_psw --host "127.0.0.1" ping --silent
 
 .PHONY: test
 test:
 	@echo "UNIT TESTING in SHARED folder..."
 	 @php vendor/phpunit/phpunit/phpunit --bootstrap apps/bootstrap.php --configuration phpunit.xml tests/Shared --teamcity
+
+.PHONY: go_mysql
+go_mysql:
+	@echo "Going inside MySql..."
+	@docker exec -it rgr_crm_mysql mysql --user=root --password=crm_psw

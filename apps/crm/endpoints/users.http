@@ -6,4 +6,3 @@ Content-Type: application/json
   "name": "Random name",
   "email": "random@email.com"
 }
-

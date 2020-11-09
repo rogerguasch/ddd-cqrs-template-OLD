@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace RGR\Crm\Users\Domain;
 
+use RGR\Shared\Domain\Aggregate\AggregateRoot;
 
-final class User
+final class User extends AggregateRoot
 {
     private UserId $id;
     private UserName $name;

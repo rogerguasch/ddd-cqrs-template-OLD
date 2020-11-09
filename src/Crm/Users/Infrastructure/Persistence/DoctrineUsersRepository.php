@@ -12,13 +12,13 @@ use RGR\Shared\Infrastructure\Persistence\Doctrine\DoctrineRepository;
 class DoctrineUsersRepository extends DoctrineRepository implements UsersRepository
 {
 
-    public function save(User $user): void
+    final public function save(User $user): void
     {
-        // TODO: Implement save() method.
+        $this->persist($user);
     }
 
     public function search(UserId $id): ?User
     {
-        // TODO: Implement search() method.
+        return $this->repository(User::class)->find($id);
     }
 }

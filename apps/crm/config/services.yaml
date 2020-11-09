@@ -14,3 +14,15 @@ services:
 
   RGR\:
     resource: '../../../src'
+
+  # Wire
+  RGR\Shared\:
+    resource: '../../../src/Shared'
+
+  RGR\Crm\:
+    resource: '../../../src/Crm'
+
+  # -- TAGGING --
+  RGR\Shared\Infrastructure\Symfony\AddJsonBodyToRequestListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }

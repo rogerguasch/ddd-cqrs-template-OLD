@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace RGR\Shared\Infrastructure\Doctrine;
 
-
 use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Schema\MySqlSchemaManager;
@@ -12,14 +11,14 @@ use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver;
 use Doctrine\ORM\Tools\Setup;
+use function Lambdish\Phunctional\dissoc;
 use RGR\Shared\Infrastructure\Doctrine\Dbal\DbalCustomTypesRegistrar;
 use RuntimeException;
-use function Lambdish\Phunctional\dissoc;
 
 final class DoctrineEntityManagerFactory
 {
     private static array $sharedPrefixes = [
-        __DIR__ . '/../../../Shared/Infrastructure/Persistence/Mappings' => 'RGR\Shared\Domain',
+        __DIR__.'/../../../Shared/Infrastructure/Persistence/Mappings' => 'RGR\Shared\Domain',
     ];
 
     public static function create(
