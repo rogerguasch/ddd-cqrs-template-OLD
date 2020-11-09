@@ -3,3 +3,11 @@ doctrine_migrations:
         # namespace is arbitrary but should be different from App\Migrations
         # as migrations classes should NOT be autoloaded
         'DoctrineMigrations': '%kernel.project_dir%/migrations'
+
+    em: default
+
+    all_or_nothing: true
+
+    organize_migrations: BY_YEAR_AND_MONTH
+
+    check_database_platform: true

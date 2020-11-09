@@ -9,7 +9,6 @@ use RGR\Shared\Infrastructure\Doctrine\DoctrineEntityManagerFactory;
 
 final class CrmEntityManagerFactory
 {
-    private const SCHEMA_PATH = __DIR__.'/../../../../../docker/etc/database/crm.sql';
 
     public static function create(array $parameters, string $environment): EntityManagerInterface
     {
@@ -25,7 +24,6 @@ final class CrmEntityManagerFactory
             $parameters,
             $prefixes,
             $isDevMode,
-            self::SCHEMA_PATH,
             $dbalCustomTypesClasses
         );
     }

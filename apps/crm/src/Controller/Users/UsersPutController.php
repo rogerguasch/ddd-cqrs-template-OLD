@@ -6,10 +6,8 @@ namespace RGR\Apps\Crm\Controller\Users;
 
 use RGR\Apps\Crm\Controller\Users\Request\CreateUserRequest;
 use RGR\Crm\Users\Application\UserCreator;
-use RGR\Crm\Users\Domain\UserId;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Uid\Uuid;
 
 final class UsersPutController
 {
@@ -24,7 +22,7 @@ final class UsersPutController
     public function __invoke(Request $request): Response
     {
         $createUserRequest = new CreateUserRequest(
-            '6e178b0c-8b07-4d04-b380-5d6cfad091f5',
+        'dd6ead18-5d9c-4b8c-b99d-eeda5afa5099',
             $request->get('name'),
             $request->get('email'),
         );

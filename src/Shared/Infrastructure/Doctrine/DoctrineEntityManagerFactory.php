@@ -25,11 +25,10 @@ final class DoctrineEntityManagerFactory
         array $parameters,
         array $contextPrefixes,
         bool $isDevMode,
-        string $schemaFile,
         array $dbalCustomTypesClasses
     ): EntityManager {
         if ($isDevMode) {
-            static::generateDatabaseIfNotExists($parameters, $schemaFile);
+            static::generateDatabaseIfNotExists($parameters);
         }
 
         DbalCustomTypesRegistrar::register($dbalCustomTypesClasses);
@@ -37,10 +36,8 @@ final class DoctrineEntityManagerFactory
         return EntityManager::create($parameters, self::createConfiguration($contextPrefixes, $isDevMode));
     }
 
-    private static function generateDatabaseIfNotExists(array $parameters, string $schemaFile): void
+    private static function generateDatabaseIfNotExists(array $parameters): void
     {
-        self::ensureSchemaFileExists($schemaFile);
-
         $databaseName = $parameters['dbname'];
         $parametersWithoutDatabaseName = dissoc($parameters, 'dbname');
         $connection = DriverManager::getConnection($parametersWithoutDatabaseName);
@@ -48,18 +45,10 @@ final class DoctrineEntityManagerFactory
 
         if (!self::databaseExists($databaseName, $schemaManager)) {
             $schemaManager->createDatabase($databaseName);
-            $connection->exec(sprintf('USE %s', $databaseName));
-            $connection->exec(file_get_contents(realpath($schemaFile)));
+            $connection->executeStatement(sprintf('USE %s', $databaseName));
         }
 
         $connection->close();
-    }
-
-    private static function ensureSchemaFileExists(string $schemaFile): void
-    {
-        if (!file_exists($schemaFile)) {
-            throw new RuntimeException(sprintf('The file <%s> does not exist', $schemaFile));
-        }
     }
 
     private static function databaseExists($databaseName, MySqlSchemaManager $schemaManager): bool
