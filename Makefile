@@ -58,3 +58,10 @@ test:
 go_mysql:
 	@echo "Going inside MySql..."
 	@docker exec -it rgr_crm_mysql mysql --user=root --password=crm_psw
+
+.PHONY: prepare-database
+prepare-database:
+	@echo "Creating the database..."
+	@docker exec rgr_crm php apps/crm/bin/console doctrine:database:create
+	@echo "Migrations..."
+	@docker exec rgr_crm php apps/crm/bin/console doctrine:migrations:migrate
