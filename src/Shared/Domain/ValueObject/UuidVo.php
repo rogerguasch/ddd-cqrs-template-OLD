@@ -11,7 +11,7 @@ abstract class UuidVo
 {
     private string $uuid;
 
-    public function __construct(string $value)
+    final public function __construct(string $value)
     {
         $this->ensureIsValidUuid($value);
         $this->uuid = $value;
