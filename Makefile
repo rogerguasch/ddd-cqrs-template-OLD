@@ -1,5 +1,6 @@
 current-dir := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
+#*********** QUALITY TOOLS ***********#
 .PHONY: rector
 rector:
 	@echo "Checking with Rector";
@@ -15,20 +16,13 @@ php-cs-fixer:
 	@echo "FIXING with PHP CS Fixer";
 	@vendor/bin/phpcs
 
-
+#*********** PROJECT ***********#
 .PHONY: install-deps
 install-deps:
 	@echo "Composer install..."
 	@composer install
 
-.PHONY: start-api
-start-api:
-	@php -S localhost:8090 apps/api/public/index.php
-
-.PHONY: start-crm
-start-crm:
-	@php -S localhost:8091 apps/crm/public/index.php
-
+#*********** CACHE ***********#
 .PHONY: clear-cache
 clear-cache:
 	@rm -rf apps/*/var
@@ -37,6 +31,8 @@ clear-cache:
 	@echo "Cleaning CRM cache..."
 	@./apps/crm/bin/console cache:warmup
 
+
+#*********** DOCKER ***********#
 .PHONY: start
 start:
 	@docker-compose up -d
@@ -45,15 +41,20 @@ start:
 restart:
 	@docker-compose restart
 
-.PHONY: ping-mysql
-ping-mysql:
-	@docker exec rgr_crm_mysql mysqladmin --user=root --password=crm_psw --host "127.0.0.1" ping --silent
 
+#*********** TEST ***********#
 .PHONY: test
 test:
 	@echo "UNIT TESTING in SHARED folder..."
-	 @php vendor/phpunit/phpunit/phpunit --bootstrap apps/bootstrap.php --configuration phpunit.xml tests/Shared --teamcity
+	@php vendor/phpunit/phpunit/phpunit --bootstrap apps/bootstrap.php --configuration phpunit.xml tests/ --teamcity
 
+.PHONY: test-with-coverage
+test-with-coverage:
+	@echo "Generating code coverage report..."
+	@./vendor/bin/phpunit --coverage-html code_coverage_report
+
+
+#*********** DATABASE ***********#
 .PHONY: go_mysql
 go_mysql:
 	@echo "Going inside MySql..."
@@ -65,3 +66,7 @@ prepare-database:
 	@docker exec rgr_crm php apps/crm/bin/console doctrine:database:create
 	@echo "Migrations..."
 	@docker exec rgr_crm php apps/crm/bin/console doctrine:migrations:migrate
+
+.PHONY: ping-mysql
+ping-mysql:
+	@docker exec rgr_crm_mysql mysqladmin --user=root --password=crm_psw --host "127.0.0.1" ping --silent
