@@ -19,6 +19,11 @@
 /phpcs.xml
 ###< squizlabs/php_codesniffer ###
 
+###> friendsofphp/php-cs-fixer ###
+/.php_cs
+/.php_cs.cache
+###< friendsofphp/php-cs-fixer ###
+
 ###> CUSTOM ###
 .idea
 .php_cs.cache
@@ -28,14 +33,13 @@ build
 ###> phpunit/phpunit ###
 /phpunit.xml
 .phpunit.result.cache
+!/.phpunit.cache/
+!/code_coverage_report/
 ###< phpunit/phpunit ###
 
-###> friends-of-behat/symfony-extension ###
-/behat.yml
-###< friends-of-behat/symfony-extension ###
 
-###> friendsofphp/php-cs-fixer ###
-/.php_cs
-/.php_cs.cache
-###< friendsofphp/php-cs-fixer ###
+###> PROJECT ###
 /apps/crm/var/
+/.phpunit.cache/code-coverage/
+/code_coverage_report/
+###< PROJECT ###
