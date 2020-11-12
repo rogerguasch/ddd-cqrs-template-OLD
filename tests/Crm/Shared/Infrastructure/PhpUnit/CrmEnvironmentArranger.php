@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace RGR\Tests\Crm\Shared\Infrastructure\PhpUnit;
 
+use Doctrine\ORM\EntityManager;
 use RGR\Tests\Shared\Infrastructure\Arranger\EnvironmentArranger;
 use RGR\Tests\Shared\Infrastructure\Doctrine\MySqlDatabaseCleaner;
-use Doctrine\ORM\EntityManager;
 use function Lambdish\Phunctional\apply;
 
 final class CrmEnvironmentArranger implements EnvironmentArranger
@@ -25,5 +25,11 @@ final class CrmEnvironmentArranger implements EnvironmentArranger
 
     public function close(): void
     {
+        $this->entityManager->getConnection()->rollBack();
+    }
+
+    public function open(): void
+    {
+        $this->entityManager->getConnection()->beginTransaction();
     }
 }

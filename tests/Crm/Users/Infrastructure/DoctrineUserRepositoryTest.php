@@ -14,8 +14,6 @@ final class DoctrineUserRepositoryTest extends UserModuleInfrastructureTestCase
     /** @test */
     public function it_should_save_a_user(): void
     {
-//        $fileUsersRepository = new FileUsersRepository();
-
         $user = UserMother::random();
 
         $this->doctrineRepository()->save($user);
@@ -24,20 +22,16 @@ final class DoctrineUserRepositoryTest extends UserModuleInfrastructureTestCase
     /** @test */
     public function it_should_return_an_existing_user(): void
     {
-        $fileUsersRepository = new FileUsersRepository();
-
         $user = UserMother::random();
 
-        $fileUsersRepository->save($user);
+        $this->doctrineRepository()->save($user);
 
-        $this->assertEquals($user, $fileUsersRepository->search($user->id()));
+        $this->assertEquals($user, $this->doctrineRepository()->search($user->id()));
     }
 
     /** @test */
     public function it_should_not_return_a_non_existing_user(): void
     {
-        $fileUsersRepository = new FileUsersRepository();
-
-        $this->assertNull($fileUsersRepository->search(UserIdMother::random()));
+        $this->assertNull($this->doctrineRepository()->search(UserIdMother::random()));
     }
 }

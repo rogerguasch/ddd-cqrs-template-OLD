@@ -16,6 +16,8 @@ abstract class CrmContextInfrastructureTestCase extends InfrastructureTestCase
 
         $arranger = new CrmEnvironmentArranger($this->service(EntityManager::class));
 
+        $arranger->open();
+
         $arranger->arrange();
     }
 

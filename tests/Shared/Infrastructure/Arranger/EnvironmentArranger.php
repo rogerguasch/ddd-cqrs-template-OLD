@@ -9,4 +9,6 @@ interface EnvironmentArranger
     public function arrange(): void;
 
     public function close(): void;
+
+    public function open(): void;
 }
