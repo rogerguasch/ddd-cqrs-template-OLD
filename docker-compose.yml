@@ -91,13 +91,13 @@ services:
     networks:
       - rgr-app
 
-  mysql:
+  crm_mysql:
     container_name: rgr_crm_mysql
     image: mysql:8.0
     ports:
       - 3360:3306
     environment:
-      - MYSQL_ROOT_PASSWORD=crm_psw
+      - MYSQL_ROOT_PASSWORD=
       - MYSQL_ALLOW_EMPTY_PASSWORD=no
     healthcheck:
       test: [ "CMD", "mysqladmin", "--user=root", "--password=", "--host=127.0.0.1", "ping", "--silent" ]

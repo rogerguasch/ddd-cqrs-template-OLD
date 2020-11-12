@@ -24,13 +24,21 @@ install-deps:
 
 #*********** CACHE ***********#
 .PHONY: clear-cache
-clear-cache:
+clear-cache: clear-crm-cache clear-api-cache
+
+#*********** CACHE ***********#
+.PHONY: clear-crm-cache
+clear-crm-cache:
 	@rm -rf apps/*/var
-	@echo "Cleaning API cache..."
-	@./apps/api/bin/console cache:warmup
 	@echo "Cleaning CRM cache..."
 	@./apps/crm/bin/console cache:warmup
 
+#*********** CACHE ***********#
+.PHONY: clear-api-cache
+clear-api-cache:
+	@rm -rf apps/*/var
+	@echo "Cleaning API cache..."
+	@./apps/api/bin/console cache:warmup
 
 #*********** DOCKER ***********#
 .PHONY: start
