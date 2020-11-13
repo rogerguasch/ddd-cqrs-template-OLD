@@ -49,6 +49,13 @@ start:
 restart:
 	@docker-compose restart
 
+.PHONY: ps
+ps:
+	@docker-compose ps
+
+.PHONY: down
+down:
+	@docker-compose down
 
 #*********** TEST ***********#
 .PHONY: test
