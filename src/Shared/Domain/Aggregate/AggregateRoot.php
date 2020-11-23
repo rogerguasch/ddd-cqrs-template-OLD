@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace RGR\Shared\Domain\Aggregate;
 
-//use CodelyTv\Shared\Domain\Bus\Event\DomainEvent;
+use RGR\Shared\Domain\Bus\Event\DomainEvent;
 
 abstract class AggregateRoot
 {
@@ -18,8 +18,8 @@ abstract class AggregateRoot
         return $domainEvents;
     }
 
-//    final protected function record(DomainEvent $domainEvent): void
-//    {
-//        $this->domainEvents[] = $domainEvent;
-//    }
+    final protected function record(DomainEvent $domainEvent): void
+    {
+        $this->domainEvents[] = $domainEvent;
+    }
 }
