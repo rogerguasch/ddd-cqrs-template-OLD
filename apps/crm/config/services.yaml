@@ -6,6 +6,10 @@ services:
     autoconfigure: true
     autowire: true
 
+  # Configure
+  _instanceof:
+    RGR\Shared\Domain\Bus\Event\DomainEventSubscriber:
+      tags: ['rgr.domain_event_subscriber']
 
   RGR\Apps\Crm\Controller\:
     resource: '../src/Controller'
@@ -26,3 +30,14 @@ services:
   RGR\Shared\Infrastructure\Symfony\AddJsonBodyToRequestListener:
     tags:
       - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+  # -- TAGGING --
+  RGR\Shared\Infrastructure\Bus\Event\InMemory\InMemorySymfonyEventBus:
+    arguments: [ !tagged rgr.domain_event_subscriber ]
+    lazy: true
+
+#  RGR\Shared\Infrastructure\Bus\Event\DomainEventMapping:
+#    arguments: [!tagged rgr.domain_event_subscriber]
+#
+#  RGR\Shared\Infrastructure\Bus\Event\DomainEventSubscriberLocator:
+#    arguments: [!tagged rgr.domain_event_subscriber]

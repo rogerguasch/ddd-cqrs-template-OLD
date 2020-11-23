@@ -8,6 +8,7 @@ use RGR\Apps\Crm\Controller\Users\Request\CreateUserRequest;
 use RGR\Crm\Users\Application\UserCreator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Uid\Uuid;
 
 final class UsersPutController
 {
@@ -22,12 +23,12 @@ final class UsersPutController
     public function __invoke(Request $request): Response
     {
         $createUserRequest = new CreateUserRequest(
-        'dd6ead18-5d9c-4b8c-b99d-eeda5afa5099',
+            Uuid::v4()->toRfc4122(),
             $request->get('name'),
             $request->get('email'),
         );
 
-        $this->userCreator->execute($createUserRequest);
+        $this->userCreator->__invoke($createUserRequest);
 
         return new Response('', Response::HTTP_CREATED);
     }

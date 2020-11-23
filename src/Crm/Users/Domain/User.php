@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace RGR\Crm\Users\Domain;
 
+use RGR\Crm\Users\Domain\Events\UserCreatedDomainEvent;
 use RGR\Shared\Domain\Aggregate\AggregateRoot;
 
 final class User extends AggregateRoot
@@ -17,6 +18,15 @@ final class User extends AggregateRoot
         $this->id = $id;
         $this->name = $name;
         $this->email = $email;
+    }
+
+    public static function create(UserId $id, UserName $name, UserEmail $email): self
+    {
+        $user = new self($id, $name, $email);
+
+        $user->record(new UserCreatedDomainEvent($id->value(), $name->value(), $email->value()));
+
+        return $user;
     }
 
     public function id(): UserId
