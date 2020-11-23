@@ -11,3 +11,8 @@ My personal template for DDD with CQRS and Symfony
 ![alt text](docs/images/xdebug/3-debug.png "Debug")
 
 ![alt text](docs/images/xdebug/4-server.png "Server")
+
+
+---
+
+This repository is based on [@CodelyTv](https://github.com/CodelyTV/php-ddd-example) :sunglasses:
