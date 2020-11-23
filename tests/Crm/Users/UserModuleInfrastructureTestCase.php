@@ -13,7 +13,6 @@ abstract class UserModuleInfrastructureTestCase extends CrmContextInfrastructure
 {
     protected function doctrineRepository(): UsersRepository
     {
-//        return $this->service(UsersRepository::class);
         return new DoctrineUsersRepository($this->service(EntityManager::class));
     }
 }
