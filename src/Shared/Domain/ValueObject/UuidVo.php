@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace RGR\Shared\Domain\ValueObject;
 
 use InvalidArgumentException;
+use Stringable;
 use Symfony\Component\Uid\Uuid;
 
-abstract class UuidVo
+abstract class UuidVo implements Stringable
 {
     private string $uuid;
 
