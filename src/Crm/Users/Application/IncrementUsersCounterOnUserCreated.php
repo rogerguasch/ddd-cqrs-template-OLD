@@ -18,7 +18,7 @@ class IncrementUsersCounterOnUserCreated implements DomainEventSubscriber
         return [UserCreatedDomainEvent::class];
     }
 
-    public function execute(UserCreatedDomainEvent $event): void
+    public function __invoke(UserCreatedDomainEvent $event): void
     {
         $userId = new UserId($event->aggregateId());
 

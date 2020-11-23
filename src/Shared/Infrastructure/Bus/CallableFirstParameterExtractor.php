@@ -49,7 +49,7 @@ final class CallableFirstParameterExtractor
     public function extract($class): ?string
     {
         $reflector = new ReflectionClass($class);
-        $method    = $reflector->getMethod('execute');
+        $method    = $reflector->getMethod('__invoke');
 
         if ($this->hasOnlyOneParameter($method)) {
             return $this->firstParameterClassFrom($method);

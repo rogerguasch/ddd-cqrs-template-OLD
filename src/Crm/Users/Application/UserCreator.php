@@ -23,7 +23,7 @@ final class UserCreator
         $this->eventBus = $eventBus;
     }
 
-    public function execute(CreateUserRequest $createUserRequest): void
+    public function __invoke(CreateUserRequest $createUserRequest): void
     {
         $user = User::create(
             new UserId($createUserRequest->id()),
@@ -32,6 +32,6 @@ final class UserCreator
         );
 
         $this->usersRepository->save($user);
-        $this->eventBus->publish($user->pullDomainEvents());
+        $this->eventBus->publish(...$user->pullDomainEvents());
     }
 }

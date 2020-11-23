@@ -28,7 +28,7 @@ final class UsersPutController
             $request->get('email'),
         );
 
-        $this->userCreator->execute($createUserRequest);
+        $this->userCreator->__invoke($createUserRequest);
 
         return new Response('', Response::HTTP_CREATED);
     }

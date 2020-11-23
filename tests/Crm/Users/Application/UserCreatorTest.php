@@ -29,7 +29,7 @@ final class UserCreatorTest extends UserModuleUnitTestCase
 
         $this->shouldSave($user);
 
-        $this->userCreator->execute($createUserRequest);
+        $this->userCreator->__invoke($createUserRequest);
     }
 
 }
